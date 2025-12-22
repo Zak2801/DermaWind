@@ -88,4 +88,4 @@ ZKsDermaWind.Theme.Colors = {
 
 ## License
 
-This project is free to use and modify.
+Distributed under the MIT License. See `LICENSE` for more information.
