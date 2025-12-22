@@ -180,15 +180,14 @@ end
 
 local PANEL = FindMetaTable("Panel")
 for funcName, func in pairs(PANEL) do
-    if table.HasValue(R, funcName) or table.HasValue(R, string.Replace(funcName, "Set", "")) then continue end
+    funcName = string.lower(funcName)
+    if table.HasValue(R, funcName) or table.HasValue(R, string.Replace(funcName, "set", "")) then continue end
     if not isfunction(func) then continue end
 
-    R[string.lower(string.Replace(funcName, "Set", ""))] = function(panel, val)
+    R[string.Replace(funcName, "set", "")] = function(panel, val)
         func(panel, val)
     end
 end
-
-PrintTable(R)
 
 -- Mark lib as loaded
 ZKsDermaWind.Loaded = true
