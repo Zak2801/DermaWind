@@ -20,5 +20,5 @@ concommand.Add("zks_test_ui", function()
 
     local btn = vgui.Create("DButton", frame)
     btn:SetText("Click Meee")
-    btn:DWClassName("bg-primary text-black text-lg rounded-lg hover:bg-danger m-4 w-500 dock-left")
+    btn:DWClassName("bg-primary text-black text-lg rounded-lg hover:bg-danger m-4 w-500 dock-left border-5")
 end)

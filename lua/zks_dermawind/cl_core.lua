@@ -55,6 +55,7 @@ function ZKsDermaWind.Style(panel, classString)
     -- We define this once here to handle the visual properties set above
     panel.Paint = function(self, w, h)
         local bgColor = self._dw_bg
+        local border = self._dw_border
         
         -- Handle Hover Logic
         if self:IsHovered() and self._dw_bg_hover then
@@ -65,6 +66,11 @@ function ZKsDermaWind.Style(panel, classString)
         if bgColor then
             local radius = self._dw_rounded or 0
             draw.RoundedBox(radius, 0, 0, w, h, bgColor)
+        end
+
+        if border then
+            surface.SetDrawColor(border.color.r, border.color.g, border.color.b, border.color.a)
+            surface.DrawOutlinedRect(0, 0, w, h, border.size)
         end
         
         -- Draw Text (Fix for DButton/Label)
@@ -78,5 +84,7 @@ function ZKsDermaWind.Style(panel, classString)
             -- Simple centering. You might want to support "text-left" later.
             draw.SimpleText(txt, self:GetFont(), w/2, h/2, col, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
         end
+
+        surface.SetAlphaMultiplier(panel._dw_opacity or 1)
     end
 end
