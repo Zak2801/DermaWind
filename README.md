@@ -1,6 +1,7 @@
 # DermaWind
 
 DermaWind is a utility-first styling library for Garry's Mod Derma, heavily inspired by Tailwind CSS. It allows developers to style VGUI panels using concise string classes instead of writing verbose Lua method calls for every visual property.
+DermaWind is currently in early access and under active development.
 
 ## Features
 
