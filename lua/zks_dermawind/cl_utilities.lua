@@ -71,8 +71,14 @@ end
 R["p"] = function(panel, val)
     local px = ZKsDermaWind.Theme.Spacing[val]
     if px then
-        panel:DockPadding(px, px, px, px)
+        if panel:GetDock() ~= 0 then
+            panel:DockPadding(px, px, px, px)
+        else
+            panel:SetWide(panel:GetWide() + px)
+            panel:SetTall(panel:GetTall() + px)
+        end
     end
+
 end
 
 -- Margin

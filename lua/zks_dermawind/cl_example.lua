@@ -12,7 +12,7 @@ concommand.Add("zks_test_ui", function()
 
     local cbtn = vgui.Create("DButton", frame)
     cbtn:SetText("X")
-    cbtn:DWClassName("bg-secondary text-black text-lg rounded-lg hover:bg-danger")
+    cbtn:DWClassName("bg-secondary text-black text-lg rounded-lg hover:bg-danger p-2")
     cbtn:SetPos(frame:GetWide()-cbtn:GetWide(), 0)
     cbtn.DoClick = function()
         frame:Close()

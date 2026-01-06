@@ -46,8 +46,8 @@ function ZKsDermaWind.Style(panel, classString)
         if utility then
             utility(panel, value, isHover)
         else
-            -- Optional: Warn about unknown utility
-            -- print("[ZKsDermaWind] Unknown utility:", prefix)
+            -- Warn about unknown utility
+            print("[ZKsDermaWind] Unknown utility:", prefix)
         end
     end
 
