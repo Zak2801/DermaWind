@@ -181,7 +181,7 @@ end
 local PANEL = FindMetaTable("Panel")
 for funcName, func in pairs(PANEL) do
     funcName = string.lower(funcName)
-    if table.HasValue(R, funcName) or table.HasValue(R, string.Replace(funcName, "set", "")) then continue end
+    if R[funcName] or R[string.Replace(funcName, "set", "")] then continue end
     if not isfunction(func) then continue end
 
     R[string.Replace(funcName, "set", "")] = function(panel, val)

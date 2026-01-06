@@ -54,6 +54,7 @@ function ZKsDermaWind.Style(panel, classString)
     -- 4. Apply Paint Hook (The "Renderer")
     -- We define this once here to handle the visual properties set above
     panel.Paint = function(self, w, h)
+        surface.SetAlphaMultiplier(panel._dw_opacity or 1)
         local bgColor = self._dw_bg
         local border = self._dw_border
         
@@ -73,18 +74,22 @@ function ZKsDermaWind.Style(panel, classString)
             surface.DrawOutlinedRect(0, 0, w, h, border.size)
         end
         
+        surface.SetAlphaMultiplier(1)
+    end
+
+    local txt
+    if panel.GetText then
+        txt = panel:GetText()
+        panel:SetText("")
+    end
+
+    panel.PaintOver = function(self, w, h)
         -- Draw Text (Fix for DButton/Label)
-        if self.GetText then
-            -- This is a simplified text draw. 
-            -- For production, you might want to wrap self:DrawButtonText() if it exists
-            local txt = self:GetText()
+        if txt then
             local succ, err = pcall(function() self:GetTextColor() end)
             local col = succ and self:GetTextColor() or Color(255,255,255)
             
-            -- Simple centering. You might want to support "text-left" later.
             draw.SimpleText(txt, self:GetFont(), w/2, h/2, col, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
         end
-
-        surface.SetAlphaMultiplier(panel._dw_opacity or 1)
     end
 end
